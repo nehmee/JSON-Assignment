@@ -15,6 +15,7 @@ class PortfolioViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Home"
         performRequest()
         self.tableView.tableFooterView = UIView()
     }
@@ -38,6 +39,16 @@ class PortfolioViewController: UITableViewController {
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "portfolioToOptionSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! OptionsViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.id = decodedPortfolioDataArray[indexPath.row].id
+            destinationVC.created_at = decodedPortfolioDataArray[indexPath.row].created_at
+            destinationVC.investment_type = decodedPortfolioDataArray[indexPath.row].investment_type
+        }
     }
     
     //MARK: - Decoding JSON

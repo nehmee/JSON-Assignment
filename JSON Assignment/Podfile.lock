@@ -1,0 +1,26 @@
+PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - CollectionViewPagingLayout (0.4.0)
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - Charts
+  - CollectionViewPagingLayout
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - CollectionViewPagingLayout
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  CollectionViewPagingLayout: 38b1bd88c6b61bfa9a92c03d13189fe808953559
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: b669075ba90d60c73c3b3549f56db6ca0f474e2a
+
+COCOAPODS: 1.10.1

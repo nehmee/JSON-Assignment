@@ -9,4 +9,7 @@ import Foundation
 struct PortfolioData: Codable {
     let name: String
     let balance: Int
+    let id: String
+    let created_at: String
+    let investment_type: String
 }

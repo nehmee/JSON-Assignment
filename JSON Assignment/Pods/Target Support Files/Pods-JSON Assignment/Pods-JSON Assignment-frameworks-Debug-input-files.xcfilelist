@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-JSON Assignment/Pods-JSON Assignment-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/CollectionViewPagingLayout/CollectionViewPagingLayout.framework
+${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework
