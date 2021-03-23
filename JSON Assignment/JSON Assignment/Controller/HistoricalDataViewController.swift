@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class HistoricalDataViewController: UIViewController, ChartViewDelegate {
+class HistoricalDataViewController: UIViewController {
  
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var creationDateLabel: UILabel!
@@ -82,10 +82,11 @@ class HistoricalDataViewController: UIViewController, ChartViewDelegate {
         } catch {
             print(error)
         }
-    }
-    
-    
-    
+    }   
+}
+
+//MARK: - Drawing Chart with ChartViewDelegate
+extension HistoricalDataViewController: ChartViewDelegate{
     func drawChart(){
         let data = LineChartData()
         var lineChartEntry1 = [ChartDataEntry]()
@@ -93,17 +94,16 @@ class HistoricalDataViewController: UIViewController, ChartViewDelegate {
         for i in 0..<smartWealthValueArray.count {
             lineChartEntry1.append(ChartDataEntry(x: Double(i), y: Double(smartWealthValueArray[i]) ))
         }
-        let line1 = LineChartDataSet(entries: lineChartEntry1, label: "First Dataset")
+        let line1 = LineChartDataSet(entries: lineChartEntry1, label: "Smart Wealth Value")
         data.addDataSet(line1)
         if (benchmarkValueArray.count > 0) {
             var lineChartEntry2 = [ChartDataEntry]()
             for i in 0..<benchmarkValueArray.count {
                 lineChartEntry2.append(ChartDataEntry(x: Double(i), y: Double(benchmarkValueArray[i]) ))
             }
-            let line2 = LineChartDataSet(entries: lineChartEntry2, label: "Second Dataset")
+            let line2 = LineChartDataSet(entries: lineChartEntry2, label: "Bench Mark Value")
         data.addDataSet(line2)
         }
         self.lineChartView.data = data
     }
-    
 }

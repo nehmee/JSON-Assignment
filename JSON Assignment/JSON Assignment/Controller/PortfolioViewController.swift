@@ -28,7 +28,7 @@ class PortfolioViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellNibName, for: indexPath)
         
         cell.textLabel?.text = decodedPortfolioDataArray[indexPath.row].name
         cell.detailTextLabel?.text = String(decodedPortfolioDataArray[indexPath.row].balance) + " $"
@@ -38,7 +38,7 @@ class PortfolioViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "portfolioToOptionSegue", sender: self)
+        performSegue(withIdentifier: K.optionSegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,7 +78,7 @@ class PortfolioViewController: UITableViewController {
         do {
             let decodedData = try decoder.decode([PortfolioData].self, from: portfolioData)
             decodedPortfolioDataArray = decodedData
-            print(decodedPortfolioDataArray[0])
+            //print(decodedPortfolioDataArray[0])
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

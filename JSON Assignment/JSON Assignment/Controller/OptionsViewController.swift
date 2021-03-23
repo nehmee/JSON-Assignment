@@ -8,7 +8,7 @@
 import UIKit
 import CollectionViewPagingLayout
 
-class OptionsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class OptionsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var selectedIndex = Int ()
@@ -27,7 +27,7 @@ class OptionsViewController: UIViewController, UICollectionViewDataSource, UICol
         //CollectionViewPagingLayout.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "OptionCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
+        collectionView.register(UINib(nibName: K.optionsCellNibName, bundle: nil), forCellWithReuseIdentifier: K.cellIdentifier)
         
         //paging
         let layout = CollectionViewPagingLayout()
@@ -35,19 +35,53 @@ class OptionsViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.isPagingEnabled = true
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout Methods
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return CGSize(width: 300.0, height: 300.0)
+//MARK: - Decoding JSON
+    
+    func performRequest(){
+        if let url = URL(string: OptionsURL) {
+            
+            let session = URLSession(configuration: .default)
+            
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                if let safeData = data {
+                    self.parseJSON(optionsData: safeData)
+                }
+            }
+            task.resume()
+        }
     }
     
-    //MARK: - CollectionView Datasource Methods
+    func parseJSON(optionsData: Data) {
+        let decoder = JSONDecoder()
+        
+        do {
+            let decodedData = try decoder.decode([OptionsData].self, from: optionsData)
+            decodedOptionsDataArray = decodedData
+//            print(decodedOptionsDataArray[0].short_description)
+//            print(decodedOptionsDataArray[1].short_description)
+//            print(decodedOptionsDataArray[2].short_description)
+            DispatchQueue.main.async {
+                // self.tableView.reloadData()
+            }
+        } catch {
+            print(error)
+        }
+    }
+}
+
+//MARK: - CollectionView Datasource Methods
+extension OptionsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decodedOptionsDataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath) as! OptionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.cellIdentifier, for: indexPath) as! OptionCell
         cell.optionNameLabel.text = decodedOptionsDataArray[indexPath.row].name
         cell.optionNumberLabel.text = "Option \( indexPath.row + 1)"
         let balance = decodedOptionsDataArray[indexPath.row].risk_score * 1000
@@ -75,8 +109,10 @@ class OptionsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         return cell
     }
-    
-    //MARK: - CollectionView Delegate Methods
+}
+
+//MARK: - CollectionView Delegate Methods
+extension OptionsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
 //        self.CollectionViewPagingLayout.configureTapOnCollectionView()
@@ -98,43 +134,13 @@ class OptionsViewController: UIViewController, UICollectionViewDataSource, UICol
             destinationVC.risk_score = decodedOptionsDataArray[indexPath.item].risk_score
         }
     }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout Methods
+extension OptionsViewController: UICollectionViewDelegateFlowLayout{
     
-    //MARK: - Decoding JSON
-    
-    func performRequest(){
-        if let url = URL(string: OptionsURL) {
-            
-            let session = URLSession(configuration: .default)
-            
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                
-                if let safeData = data {
-                    self.parseJSON(optionsData: safeData)
-                }
-            }
-            task.resume()
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        return CGSize(width: 300.0, height: 300.0)
     }
-    
-    func parseJSON(optionsData: Data) {
-        let decoder = JSONDecoder()
-        
-        do {
-            let decodedData = try decoder.decode([OptionsData].self, from: optionsData)
-            decodedOptionsDataArray = decodedData
-            print(decodedOptionsDataArray[0].short_description)
-            print(decodedOptionsDataArray[1].short_description)
-            print(decodedOptionsDataArray[2].short_description)
-            DispatchQueue.main.async {
-                // self.tableView.reloadData()
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
 }
