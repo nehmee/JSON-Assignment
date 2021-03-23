@@ -40,8 +40,7 @@ class HistoricalDataViewController: UIViewController {
         performRequest()
     }
     
-    //MARK: - Decoding JSON
-    
+//MARK: - Decoding JSON
     func performRequest(){
         if let url = URL(string: historicalURL) {
             
@@ -82,7 +81,7 @@ class HistoricalDataViewController: UIViewController {
         } catch {
             print(error)
         }
-    }   
+    }
 }
 
 //MARK: - Drawing Chart with ChartViewDelegate

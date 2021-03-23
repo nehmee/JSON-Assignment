@@ -79,15 +79,12 @@
 		6F7BEDD1260A0E7800F6F704 /* JSON Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				6FC46B2D260A944D002EAF52 /* Utilities */,
 				6F7BEDE7260A0EFD00F6F704 /* Model */,
 				6F7BEDE8260A0F0200F6F704 /* View */,
 				6F7BEDEA260A0F0C00F6F704 /* Controller */,
-				6F7BEDD2260A0E7800F6F704 /* AppDelegate.swift */,
-				6F7BEDD4260A0E7800F6F704 /* SceneDelegate.swift */,
-				6F7BEDDB260A0E7900F6F704 /* Assets.xcassets */,
-				6F7BEDDD260A0E7900F6F704 /* LaunchScreen.storyboard */,
-				6F7BEDE0260A0E7900F6F704 /* Info.plist */,
 				6FC46B2A260A8EC8002EAF52 /* Constants.swift */,
+				6F7BEDE0260A0E7900F6F704 /* Info.plist */,
 			);
 			path = "JSON Assignment";
 			sourceTree = "<group>";
@@ -120,6 +117,17 @@
 				6FFBFE91260A70F70097607A /* HistoricalDataViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		6FC46B2D260A944D002EAF52 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6F7BEDDD260A0E7900F6F704 /* LaunchScreen.storyboard */,
+				6F7BEDDB260A0E7900F6F704 /* Assets.xcassets */,
+				6F7BEDD4260A0E7800F6F704 /* SceneDelegate.swift */,
+				6F7BEDD2260A0E7800F6F704 /* AppDelegate.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		77D159B55C088EB02733AF4E /* Frameworks */ = {
