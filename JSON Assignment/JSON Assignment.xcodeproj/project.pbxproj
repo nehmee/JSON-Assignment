@@ -17,6 +17,8 @@
 		6F7BEDEF260A124400F6F704 /* PortfolioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BEDEE260A124400F6F704 /* PortfolioData.swift */; };
 		6FC46B2B260A8EC8002EAF52 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC46B2A260A8EC8002EAF52 /* Constants.swift */; };
 		6FC70007260A9BD3005D5866 /* PortfolioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC70006260A9BD3005D5866 /* PortfolioManager.swift */; };
+		6FEDD1E5260D3AA3008F173C /* HistoricalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDD1E4260D3AA3008F173C /* HistoricalManager.swift */; };
+		6FEDD1EA260D3B3C008F173C /* OptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDD1E9260D3B3C008F173C /* OptionsManager.swift */; };
 		6FF56528260A1F1D002649AE /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF56527260A1F1D002649AE /* OptionsViewController.swift */; };
 		6FFBFE8C260A47B40097607A /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBFE8A260A47B40097607A /* OptionCell.swift */; };
 		6FFBFE8D260A47B40097607A /* OptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FFBFE8B260A47B40097607A /* OptionCell.xib */; };
@@ -39,6 +41,8 @@
 		6F7BEDEE260A124400F6F704 /* PortfolioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioData.swift; sourceTree = "<group>"; };
 		6FC46B2A260A8EC8002EAF52 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6FC70006260A9BD3005D5866 /* PortfolioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioManager.swift; sourceTree = "<group>"; };
+		6FEDD1E4260D3AA3008F173C /* HistoricalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalManager.swift; sourceTree = "<group>"; };
+		6FEDD1E9260D3B3C008F173C /* OptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsManager.swift; sourceTree = "<group>"; };
 		6FF56527260A1F1D002649AE /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		6FFBFE8A260A47B40097607A /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		6FFBFE8B260A47B40097607A /* OptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionCell.xib; sourceTree = "<group>"; };
@@ -94,10 +98,9 @@
 		6F7BEDE7260A0EFD00F6F704 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6F7BEDEE260A124400F6F704 /* PortfolioData.swift */,
-				6F1F005E260A32AC00342A3C /* OptionsData.swift */,
-				6FFBFE94260A71020097607A /* HistoricalData.swift */,
-				6FC70006260A9BD3005D5866 /* PortfolioManager.swift */,
+				6FEDD1E7260D3B1B008F173C /* Portfolio */,
+				6FEDD1E8260D3B2C008F173C /* Options */,
+				6FEDD1ED260D3B41008F173C /* Historical */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,6 +134,33 @@
 				6F7BEDD2260A0E7800F6F704 /* AppDelegate.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6FEDD1E7260D3B1B008F173C /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				6F7BEDEE260A124400F6F704 /* PortfolioData.swift */,
+				6FC70006260A9BD3005D5866 /* PortfolioManager.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		6FEDD1E8260D3B2C008F173C /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				6F1F005E260A32AC00342A3C /* OptionsData.swift */,
+				6FEDD1E9260D3B3C008F173C /* OptionsManager.swift */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		6FEDD1ED260D3B41008F173C /* Historical */ = {
+			isa = PBXGroup;
+			children = (
+				6FFBFE94260A71020097607A /* HistoricalData.swift */,
+				6FEDD1E4260D3AA3008F173C /* HistoricalManager.swift */,
+			);
+			path = Historical;
 			sourceTree = "<group>";
 		};
 		77D159B55C088EB02733AF4E /* Frameworks */ = {
@@ -271,7 +301,9 @@
 				6FFBFE8C260A47B40097607A /* OptionCell.swift in Sources */,
 				6FC70007260A9BD3005D5866 /* PortfolioManager.swift in Sources */,
 				6F7BEDD7260A0E7800F6F704 /* PortfolioViewController.swift in Sources */,
+				6FEDD1EA260D3B3C008F173C /* OptionsManager.swift in Sources */,
 				6FC46B2B260A8EC8002EAF52 /* Constants.swift in Sources */,
+				6FEDD1E5260D3AA3008F173C /* HistoricalManager.swift in Sources */,
 				6F7BEDD3260A0E7800F6F704 /* AppDelegate.swift in Sources */,
 				6FF56528260A1F1D002649AE /* OptionsViewController.swift in Sources */,
 				6FFBFE95260A71020097607A /* HistoricalData.swift in Sources */,

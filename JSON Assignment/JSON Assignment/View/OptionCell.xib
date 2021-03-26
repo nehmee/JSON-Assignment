@@ -66,13 +66,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="87" height="108"/>
             <connections>
+                <outlet property="lineView" destination="Afj-al-dNU" id="DJn-aP-v6Z"/>
                 <outlet property="optionBalanceLabel" destination="jOM-nc-33D" id="uds-Me-kJ3"/>
                 <outlet property="optionDescriptionLabel" destination="7cj-dh-clh" id="4hk-M7-6rQ"/>
                 <outlet property="optionNameLabel" destination="4J0-6K-Jfj" id="FAZ-lr-0RL"/>
@@ -88,9 +89,6 @@
         <image name="false" width="360" height="360"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

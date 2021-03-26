@@ -9,29 +9,27 @@ import UIKit
 
 class PortfolioViewController: UITableViewController {
     
-    let portolioURL = "http://127.0.0.1:3000/portfolios"
-    var decodedPortfolioDataArray = [PortfolioData]()
-    
+    var portfolioManager = PortfolioManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        portfolioManager.delegate = self
         self.title = "Home"
-        performRequest()
+        portfolioManager.performRequest()
         self.tableView.tableFooterView = UIView()
     }
-
-    //MARK: - TableView Datasource Methods
     
+    //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return decodedPortfolioDataArray.count
+        return portfolioManager.decodedPortfolioDataArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellNibName, for: indexPath)
         
-        cell.textLabel?.text = decodedPortfolioDataArray[indexPath.row].name
-        cell.detailTextLabel?.text = String(decodedPortfolioDataArray[indexPath.row].balance) + " $"
+        cell.textLabel?.text = portfolioManager.decodedPortfolioDataArray[indexPath.row].name
+        cell.detailTextLabel?.text = String(portfolioManager.decodedPortfolioDataArray[indexPath.row].balance) + " $"
         return cell
         
     }
@@ -45,48 +43,19 @@ class PortfolioViewController: UITableViewController {
         let destinationVC = segue.destination as! OptionsViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.id = decodedPortfolioDataArray[indexPath.row].id
-            destinationVC.created_at = decodedPortfolioDataArray[indexPath.row].created_at
-            destinationVC.investment_type = decodedPortfolioDataArray[indexPath.row].investment_type
+            destinationVC.id = portfolioManager.decodedPortfolioDataArray[indexPath.row].id
+            destinationVC.created_at = portfolioManager.decodedPortfolioDataArray[indexPath.row].created_at
+            destinationVC.investment_type = portfolioManager.decodedPortfolioDataArray[indexPath.row].investment_type
         }
     }
-    
-    //MARK: - Decoding JSON
-    
-    func performRequest(){
-        if let url = URL(string: portolioURL) {
-            
-            let session = URLSession(configuration: .default)
-            
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                
-                if let safeData = data {
-                    self.parseJSON(portfolioData: safeData)
-                }
-            }
-            task.resume()
+}
+
+//MARK: - Update Delegate Methods
+extension PortfolioViewController: UpdateDelegate {
+    func didUpdate(sender: PortfolioManager) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
-    
-    func parseJSON(portfolioData: Data) {
-        let decoder = JSONDecoder()
-        
-        do {
-            let decodedData = try decoder.decode([PortfolioData].self, from: portfolioData)
-            decodedPortfolioDataArray = decodedData
-            //print(decodedPortfolioDataArray[0])
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    
 }
 
