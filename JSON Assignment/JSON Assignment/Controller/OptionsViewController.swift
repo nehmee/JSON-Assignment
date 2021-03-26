@@ -67,7 +67,7 @@ extension OptionsViewController: UICollectionViewDelegate {
         let selectedCell:OptionCell = collectionView.cellForItem(at: indexPath)! as! OptionCell
         if selectedCell.optionsView.backgroundColor == .white {
             continueButton.isEnabled = true
-            selectedCell.optionsView.backgroundColor = .blue
+            selectedCell.optionsView.backgroundColor = .systemBlue
             selectedCell.optionBalanceLabel.textColor = .white
             selectedCell.optionNameLabel.textColor = .white
             selectedCell.optionNumberLabel.textColor = .white
