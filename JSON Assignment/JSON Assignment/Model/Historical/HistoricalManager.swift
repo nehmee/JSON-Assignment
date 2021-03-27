@@ -72,6 +72,8 @@ class HistoricalManager {
             print("a")
         }
         let line1 = LineChartDataSet(entries: lineChartEntry1, label: "Smart Wealth Value")
+        line1.setColor(.green)
+        line1.setCircleColor(.green)
         data.addDataSet(line1)
         print(data)
         print(lineChartEntry1)
@@ -82,13 +84,11 @@ class HistoricalManager {
                 lineChartEntry2.append(ChartDataEntry(x: Double(i), y: Double(benchmarkValueArray[i]) ))
             }
             let line2 = LineChartDataSet(entries: lineChartEntry2, label: "Bench Mark Value")
+            line2.setColor(.black)
+            line2.setCircleColor(.black)
             data.addDataSet(line2)
             print(lineChartEntry2)
         }
         self.historyDelegate?.drawChart(sender: self, data: data)
-    }
-    
-    
-    
-    
+    } 
 }
