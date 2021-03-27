@@ -6,7 +6,7 @@
 //
 
 protocol HistoricalDelegate {
-    func didCall(data: LineChartData)
+    func drawChart(sender: HistoricalManager, data: LineChartData)
     func didFailWithError(error: Error)
 }
 
@@ -47,16 +47,17 @@ class HistoricalManager {
             decodedHistoricalDataArray = decodedData
             print(decodedHistoricalDataArray[0].smartWealthValue)
             
-            for i in 0...decodedHistoricalDataArray.count - 1{
+            for i in 0...decodedHistoricalDataArray.count - 1 {
                 smartWealthValueArray.append(decodedHistoricalDataArray[i].smartWealthValue)
                 benchmarkValueArray.append(decodedHistoricalDataArray[i].benchmarkValue)
-                //print(smartWealthValueArray)
-                //print(benchmarkValueArray)
-            }
-            DispatchQueue.main.async {
-                self.drawChart()
             }
             
+            if (smartWealthValueArray.count > 0 && benchmarkValueArray.count > 0){
+                
+                DispatchQueue.main.async {
+                    self.drawChart()
+                }
+            }
         } catch {
             self.historyDelegate?.didFailWithError(error: error)
         }
@@ -68,6 +69,7 @@ class HistoricalManager {
         var lineChartEntry1 = [ChartDataEntry]()
         for i in 0..<smartWealthValueArray.count {
             lineChartEntry1.append(ChartDataEntry(x: Double(i), y: Double(smartWealthValueArray[i]) ))
+            print("a")
         }
         let line1 = LineChartDataSet(entries: lineChartEntry1, label: "Smart Wealth Value")
         data.addDataSet(line1)
@@ -83,9 +85,7 @@ class HistoricalManager {
             data.addDataSet(line2)
             print(lineChartEntry2)
         }
-        
-        //self.historyDelegate!.didCall(data: data)
-        //self.lineChartView.data = data
+        self.historyDelegate?.drawChart(sender: self, data: data)
     }
     
     

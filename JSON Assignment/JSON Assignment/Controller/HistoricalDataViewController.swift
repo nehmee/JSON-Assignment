@@ -27,6 +27,7 @@ class HistoricalDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
+        historicalManager.historyDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,19 +69,17 @@ extension HistoricalDataViewController: UITableViewDataSource{
 
 //MARK: - HistoricalDelegate Methods
 extension HistoricalDataViewController: HistoricalDelegate {
+    func drawChart(sender: HistoricalManager, data: LineChartData) {
+        self.lineChartView.data = data
+    }
+    
     func didFailWithError(error: Error) {
         print(error)
     }
-    
-    func didCall(data: LineChartData) {
-        print("wwwww")
-        DispatchQueue.main.async {
-            self.lineChartView.data = data
-        }
-    }
-    
-    
-    
-    
 }
+
+
+
+
+
 
