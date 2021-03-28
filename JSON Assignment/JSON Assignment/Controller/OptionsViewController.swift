@@ -114,9 +114,12 @@ extension OptionsViewController: UICollectionViewDelegate {
 
 //MARK: - UICollectionViewDelegateFlowLayout Methods
 extension OptionsViewController: UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return CGSize(width: 300.0, height: 300.0)
-    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+//    {
+//        return CGSize(width: 300.0, height: 300.0)
+//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        }
 }

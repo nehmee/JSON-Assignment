@@ -23,6 +23,11 @@ class OptionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.optionDescriptionLabel.numberOfLines = 0
+        self.optionDescriptionLabel.minimumScaleFactor = 0.1
+        self.optionDescriptionLabel.baselineAdjustment = .alignCenters
+        self.optionDescriptionLabel.textAlignment  = .center
+        self.optionDescriptionLabel.adjustsFontSizeToFitWidth = true
     }
 }
 
