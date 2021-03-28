@@ -56,14 +56,14 @@
                                     <constraint firstAttribute="height" constant="1" id="8s2-P9-bbE"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-px-C1F">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-px-C1F">
                                 <rect key="frame" x="20" y="272" width="260" height="26"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="false" translatesAutoresizingMaskIntoConstraints="NO" id="HPl-5v-pp3">
-                                        <rect key="frame" x="0.0" y="0.0" width="126" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="129.5" height="26"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-H3-HxJ">
-                                        <rect key="frame" x="134" y="0.0" width="126" height="26"/>
+                                        <rect key="frame" x="130.5" y="0.0" width="129.5" height="26"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
